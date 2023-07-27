@@ -21,6 +21,5 @@ export const extractGroupMembers = (data, groupMembers = {}) => {
     }
   }
   delete groupMembers[groupName];
-
-  console.log("group members: ", groupMembers);
+  return groupMembers;
 };
