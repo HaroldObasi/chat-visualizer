@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
 import { extractGroupMembers } from "@/utils/countUserTokens";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Line } from "react-chartjs-2";
+
+import ChartComponent from "@/components/ChartComponent";
 
 export default function Home() {
   const fileInputRef = useRef(null);
   const [fileContent, setFileContent] = useState([]);
   const [fileName, setFileName] = useState("");
+  const [groupMembers, setGroupMembers] = useState({});
 
   function readFile(file) {
     const reader = new FileReader();
@@ -20,7 +21,7 @@ export default function Home() {
   }
 
   const handleClick = () => {
-    extractGroupMembers(fileContent);
+    setGroupMembers(extractGroupMembers(fileContent));
   };
 
   const handleFileChange = () => {
@@ -34,12 +35,11 @@ export default function Home() {
       <h1 className="font-sans font-bold text-center">
         Upload your Whatsapp txt file here
       </h1>
-
+      <ChartComponent data={Object.entries(groupMembers)} />
       <div className="flex justify-center py-8">
         <button
           onClick={() => {
             fileInputRef.current.click();
-            console.log(fileInputRef.current.files[0]);
           }}
           className="border border-dashed rounded-md border-blue-300 hover:border-blue-800 w-[400px] h-[300px]"
         >
