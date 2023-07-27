@@ -11,14 +11,14 @@ import { Bar } from "react-chartjs-2";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-const ChartComponent = (props) => {
+const ChartComponent = ({ labels, values }) => {
   const [entries, setEntries] = useState([]);
   const data = {
-    labels: props.data.map((item) => item[0]),
+    labels: labels,
     datasets: [
       {
         labels: "369",
-        data: props.data.map((item) => item[1]),
+        data: values,
         backgroundColor: "aqua",
         borderColor: "black",
         borderWidth: 1,
