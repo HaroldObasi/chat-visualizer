@@ -1,14 +1,16 @@
 import { useRef, useState } from "react";
 import { extractGroupMembers } from "@/utils/countUserTokens";
+import { useGlobalContext } from "@/contexts/AppContext";
 
 import ChartComponent from "@/components/ChartComponent";
 import Sidebar from "@/components/layout/Sidebar";
 
 export default function Home() {
-  const fileInputRef = useRef(null);
-  const [fileContent, setFileContent] = useState([]);
-  const [fileName, setFileName] = useState("");
-  const [groupMembers, setGroupMembers] = useState({});
+  const { fileName } = useGlobalContext();
+  // const fileInputRef = useRef(null);
+  // const [fileContent, setFileContent] = useState([]);
+  // const [fileName, setFileName] = useState("");
+  // const [groupMembers, setGroupMembers] = useState({});
 
   function readFile(file) {
     const reader = new FileReader();
@@ -78,9 +80,8 @@ export default function Home() {
 
   return (
     <div class="flex h-screen">
-      {/* <div class="bg-slate-400 w-60 h-full flex-none">This is the sidebar</div> */}
       <Sidebar />
-      <div class="bg-sky-400 flex-grow">This is the main content</div>
+      <div class="bg-sky-400 flex-grow">This is the file name: {fileName} </div>
     </div>
   );
 }
