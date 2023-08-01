@@ -27,7 +27,10 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-slate-400 w-[300px] h-full flex-none">
+    <div
+      id="sidebar"
+      className="z-10 hidden md:block bg-slate-400 w-[300px] h-full flex-none"
+    >
       <div className="flex justify-center py-8 px-3">
         <button
           onClick={onClickUpload}
