@@ -1,19 +1,22 @@
-export const extractGroupMembers = (data, groupMembers = {}) => {
-  const regex = /\[\d{2}\/\d{2}\/\d{4}, \d{2}:\d{2}:\d{2}\] ([^:]+):/;
-  const tickRegex = /✅/;
+export const extractGroupMembers = (data, searchToken = "✅") => {
+  const groupMembers = {};
+  const dateRegex = /\[\d{2}\/\d{2}\/\d{4}, \d{2}:\d{2}:\d{2}\] ([^:]+):/;
+  const escapedSearchToken = searchToken.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const regexPattern = new RegExp(escapedSearchToken, "gi");
 
-  const groupName = data[0].match(regex)[1];
+  const tickRegex = /✅/;
+  const groupName = data[0].match(dateRegex)[1];
 
   for (let line of data) {
-    const matchResult = line.match(regex);
+    const matchResult = line.match(dateRegex);
     if (matchResult && matchResult.length > 1) {
       const name = matchResult[1].trim();
       if (groupMembers[name] === undefined) {
         groupMembers[name] = 0;
       }
-      const matchTick = line.match(tickRegex);
+      const matchToken = line.match(regexPattern);
 
-      if (matchTick && matchTick.length >= 1) {
+      if (matchToken && matchToken.length >= 1) {
         groupMembers[name]++;
       } else {
         continue;

@@ -3,6 +3,7 @@ import React, { useState, useContext, createContext } from "react";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+  const [searchToken, setSearchToken] = useState("✅");
   const [fileName, setFileName] = useState("");
   const [fileContent, setFileContent] = useState([]);
 
@@ -13,6 +14,8 @@ const AppProvider = ({ children }) => {
         setFileName,
         fileContent,
         setFileContent,
+        searchToken,
+        setSearchToken,
       }}
     >
       {children}

@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
-import {
-  extractGroupMembers,
-  extractMessageCount,
-} from "@/utils/countUserTokens";
+import { extractGroupMembers } from "@/utils/countUserTokens";
 import { useGlobalContext } from "@/contexts/AppContext";
 import ChartComponent from "../ChartComponent";
 
 const MainContent = () => {
-  const { fileName, fileContent } = useGlobalContext();
+  var { fileContent, searchToken } = useGlobalContext();
   const [groupMembers, setGroupMembers] = useState([]);
   const [groupTokenCount, setGroupTokenCount] = useState([]);
 
   useEffect(() => {
-    if (fileContent.length > 1) {
-      const groupData = extractGroupMembers(fileContent);
+    if (fileContent.length >= 1) {
+      const groupData = extractGroupMembers(fileContent, searchToken);
       const entries = Object.entries(groupData);
       setGroupMembers(entries.map((item) => item[0]));
       setGroupTokenCount(entries.map((item) => item[1]));
     }
-  }, [fileContent]);
+  }, [fileContent, searchToken]);
 
   return (
     <div className="px-3 py-2 max-h-screen">

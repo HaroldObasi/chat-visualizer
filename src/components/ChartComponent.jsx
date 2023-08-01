@@ -1,22 +1,15 @@
 import React from "react";
-// import {
-//   Chart as ChartJS,
-//   BarElement,
-//   LineElement,
-//   CategoryScale,
-//   LinearScale,
-//   Tooltip,
-//   Legend,
-// } from "chart.js";
+import { useGlobalContext } from "@/contexts/AppContext";
 import "chart.js/auto";
-import { Bar, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 const ChartComponent = ({ labels, values }) => {
+  const { searchToken } = useGlobalContext();
   const data = {
     labels: labels,
     datasets: [
       {
-        label: "Who's sent the most '✅' ",
+        label: `Who's sent the most "${searchToken}" in the chat`,
         data: values,
         backgroundColor: "aqua",
         borderColor: "black",
@@ -38,7 +31,6 @@ const ChartComponent = ({ labels, values }) => {
     },
     scales: {
       y: {
-        // defining min and max so hiding the dataset does not change scale range
         min: 0,
         max: Math.max(...values) + 3,
       },
