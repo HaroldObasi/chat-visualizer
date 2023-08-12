@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useGlobalContext } from "@/contexts/AppContext";
 
-const Sidebar = () => {
+const SidebarOld = () => {
   const { fileName, setFileName, setFileContent, setSearchToken } =
     useGlobalContext();
   const fileInputRef = useRef(null);
@@ -59,4 +59,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SidebarOld;
