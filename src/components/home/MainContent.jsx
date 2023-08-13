@@ -39,7 +39,7 @@ const MainContent = () => {
 
           {groupMembers.length > 0 ? (
             <div className="bg-zinc-700 overflow-y-auto max-h-[200px] px-3 rounded-sm ">
-              <p className="my-1 sticky top-0 bg-zinc-700 text-xl">
+              <p className="py-2 sticky top-0 bg-zinc-700 text-xl">
                 These are all {groupMembers.length} of your group members
               </p>
               {groupMembers.map((item) => (
