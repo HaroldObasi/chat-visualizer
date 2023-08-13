@@ -29,16 +29,13 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`${sidebarOpen ? "w-40" : "w-20"} bg-blue-500 h-screen px-2`}
+      className={`${
+        sidebarOpen ? "w-40" : "w-20"
+      }  bg-zinc-800 h-screen px-2 border-r border-zinc-500`}
     >
-      <input
-        className="p-1 my-1 rounded-sm bg-blue-300 w-full"
-        type="text"
-        onChange={(e) => setSearchToken(e.target.value)}
-      />
       <button
         onClick={onClickUpload}
-        className="py-2 px-3 text-gray-900 rounded-md border-2 border-dashed hover:border-blue-500 hover:bg-blue-50"
+        className="py-2 px-3 rounded-md border hover:bg-zinc-500"
       >
         {fileName === "" ? (
           <p>Click to upload a .txt file here</p>

@@ -18,16 +18,16 @@
   }
 }
 
+input {
+  border: none;
+  outline: none; /* This removes the outline when the input is focused */
+}
+
 body {
-  height: 100%, 
-  /* color: rgb(var(--foreground-rgb)); */
-  /* font-family: 'Roboto', sans-serif; */
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
+  /* height: 100%,  */
+  color: white;
+
+  font-family: 'Roboto', sans-serif;
 }
 
 
