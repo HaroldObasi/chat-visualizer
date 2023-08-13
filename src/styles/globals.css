@@ -18,13 +18,28 @@
   }
 }
 
+input {
+  border: none;
+  outline: none; /* This removes the outline when the input is focused */
+}
+
 body {
-  /* color: rgb(var(--foreground-rgb)); */
-  /* font-family: 'Roboto', sans-serif; */
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
+  /* height: 100%,  */
+  color: white;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+
+#container{ 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#id{
+
+}
+
+#container{
+
 }

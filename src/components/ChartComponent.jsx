@@ -1,35 +1,49 @@
-import React, { useState, useEffect } from "react";
-import {
-  Chart as ChartJS,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend,
-} from "chart.js";
+import React from "react";
+import { useGlobalContext } from "@/contexts/AppContext";
+import "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
-
-const ChartComponent = (props) => {
-  const [entries, setEntries] = useState([]);
+const ChartComponent = ({ labels, values, className }) => {
+  const { searchToken } = useGlobalContext();
   const data = {
-    labels: props.data.map((item) => item[0]),
+    labels: labels,
     datasets: [
       {
-        labels: "369",
-        data: props.data.map((item) => item[1]),
+        label: `Who's sent the most "${searchToken}" in the chat`,
+        data: values,
         backgroundColor: "aqua",
-        borderColor: "black",
-        borderWidth: 1,
       },
     ],
   };
 
-  const options = {};
+  const options = {
+    scales: {
+      y: {
+        min: 0,
+        max: Math.max(...values) + 3,
+        display: true,
+      },
+      x: {
+        display: false, // Hide x-axis labels
+      },
+    },
+    elements: {
+      point: {
+        radius: 1.5,
+        hoverRadius: 5,
+      },
+      line: {
+        tension: 0.4,
+        backgroundColor: "aqua",
+        borderColor: "red",
+      },
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+  };
 
   return (
-    <div>
+    <div className={`relative w-full ${className}`}>
       <Bar data={data} options={options}></Bar>
     </div>
   );
