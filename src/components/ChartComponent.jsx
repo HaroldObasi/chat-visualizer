@@ -1,9 +1,9 @@
 import React from "react";
 import { useGlobalContext } from "@/contexts/AppContext";
 import "chart.js/auto";
-import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
-const ChartComponent = ({ labels, values }) => {
+const ChartComponent = ({ labels, values, className }) => {
   const { searchToken } = useGlobalContext();
   const data = {
     labels: labels,
@@ -12,48 +12,39 @@ const ChartComponent = ({ labels, values }) => {
         label: `Who's sent the most "${searchToken}" in the chat`,
         data: values,
         backgroundColor: "aqua",
-        borderColor: "black",
-        borderWidth: 1,
       },
     ],
   };
 
   const options = {
-    plugins: {
-      subtitle: {
-        display: true,
-        text: "Custom Chart Subtitle",
-      },
-      title: {
-        display: true,
-        text: "Custom Chart Title",
-      },
-    },
     scales: {
       y: {
         min: 0,
         max: Math.max(...values) + 3,
+        display: true,
+      },
+      x: {
+        display: false, // Hide x-axis labels
       },
     },
     elements: {
       point: {
-        radius: 3,
+        radius: 1.5,
         hoverRadius: 5,
       },
       line: {
-        tension: 0,
+        tension: 0.4,
         backgroundColor: "aqua",
-        borderWidth: 5,
         borderColor: "red",
-        fill: true,
       },
     },
     responsive: true,
+    maintainAspectRatio: false,
   };
 
   return (
-    <div className="relative h-[40vh] w-[80%]">
-      <Line data={data} options={options}></Line>
+    <div className={`relative w-full ${className}`}>
+      <Bar data={data} options={options}></Bar>
     </div>
   );
 };
