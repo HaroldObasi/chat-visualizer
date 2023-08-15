@@ -9,7 +9,9 @@ const ChartComponent = ({ labels, values, className }) => {
     labels: labels,
     datasets: [
       {
-        label: `Who's sent the most "${searchToken}" in the chat`,
+        label: `Who's sent the most ${
+          searchToken === "" ? "messages" : `'${searchToken}'`
+        } in the chat`,
         data: values,
         backgroundColor: "aqua",
       },
