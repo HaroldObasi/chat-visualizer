@@ -29,6 +29,7 @@ const MainContent = () => {
               type="text"
               onChange={(e) => setSearchToken(e.target.value)}
               placeholder="Search token"
+              disabled={fileContent.length < 1 ? true : false}
             />
           </div>
         </div>
