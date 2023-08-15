@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import { useGlobalContext } from "@/contexts/AppContext";
 import MainContent from "@/components/home/MainContent";
