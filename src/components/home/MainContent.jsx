@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { extractGroupMembers } from "@/utils/countUserTokens";
+import { countTokens } from "@/utils/countTokens";
 import { useGlobalContext } from "@/contexts/AppContext";
 import ChartComponent from "../ChartComponent";
 import { HiOutlineSearch } from "react-icons/hi";
@@ -11,7 +12,7 @@ const MainContent = () => {
 
   useEffect(() => {
     if (fileContent.length >= 1) {
-      const groupData = extractGroupMembers(fileContent, searchToken);
+      const groupData = countTokens(fileContent, searchToken);
       const entries = Object.entries(groupData);
       setGroupMembers(entries.map((item) => item[0]));
       setGroupTokenCount(entries.map((item) => item[1]));
