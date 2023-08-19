@@ -35,7 +35,7 @@ const Sidebar = () => {
     <div
       className={`${
         sidebarOpen ? "w-40" : "w-20"
-      }  bg-zinc-800 h-screen px-2 border-r border-zinc-500 pt-4 flex flex-col justify-between`}
+      }  bg-zinc-800 h-screen px-2 border-r border-zinc-500 py-4 flex flex-col justify-between`}
     >
       <button
         onClick={onClickUpload}
