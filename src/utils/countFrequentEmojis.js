@@ -5,14 +5,18 @@ export const countFrequentEmojis = (data) => {
   const chatLogs = data.split(TIME_REGEX);
   const emojiCounts = {};
 
-  chatLogs.forEach((log) => {
-    const emojis = log.match(emojiRegex);
+  for (const line of chatLogs) {
+    let [user, text] = line.split(":");
+    if (!text) {
+      continue;
+    }
+    const emojis = text.match(emojiRegex);
     if (emojis) {
       emojis.forEach((emoji) => {
         emojiCounts[emoji] = (emojiCounts[emoji] || 0) + 1;
       });
     }
-  });
+  }
 
   return emojiCounts;
 };
