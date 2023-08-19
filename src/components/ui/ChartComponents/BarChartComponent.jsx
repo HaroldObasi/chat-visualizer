@@ -3,7 +3,7 @@ import { useGlobalContext } from "@/contexts/AppContext";
 import "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 
-const ChartComponent = ({ labels, values, className }) => {
+const BarChartComponent = ({ labels, values, className }) => {
   const { searchToken } = useGlobalContext();
   const data = {
     labels: labels,
@@ -51,4 +51,4 @@ const ChartComponent = ({ labels, values, className }) => {
   );
 };
 
-export default ChartComponent;
+export default BarChartComponent;
