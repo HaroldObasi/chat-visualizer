@@ -46,7 +46,7 @@ const BarChartComponent = ({ labels, values, className }) => {
 
   return (
     <div className={`relative w-full ${className}`}>
-      <Bar data={data} options={options}></Bar>
+      <Bar height="350px" data={data} options={options}></Bar>
     </div>
   );
 };

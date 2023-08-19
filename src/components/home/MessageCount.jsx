@@ -23,7 +23,7 @@ const MessageCount = () => {
         Your Whatsapp group chat stats will be shown here
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 ">
+      <div className="flex flex-col gap-5">
         <BarChartComponent
           className="col-span-3"
           labels={groupMembers}
@@ -31,15 +31,17 @@ const MessageCount = () => {
         />
 
         {groupMembers.length > 0 ? (
-          <div className="bg-zinc-700 overflow-y-auto px-3 rounded-sm h-auto max-h-[300px] ">
-            <p className="py-2 sticky top-0 bg-zinc-700 text-base font-bold border-b border-zinc-500">
-              All {groupMembers.length} your group members
+          <div className="bg-zinc-700  px-3 rounded-sm h-auto max-h-[300px] ">
+            <p className="py-2 text-center  bg-zinc-700 text-base font-bold border-b border-zinc-500">
+              All {groupMembers.length} of your group members
             </p>
-            {groupMembers.map((item) => (
-              <p className="text-sm" key={item}>
-                {item}
-              </p>
-            ))}
+            <div className="flex items-center justify-between overflow-x-auto py-2">
+              {groupMembers.map((item) => (
+                <div className="px-2 flex" key={item}>
+                  <p className="px-3">{item}</p>
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
           <></>
