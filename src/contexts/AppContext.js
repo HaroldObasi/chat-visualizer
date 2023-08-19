@@ -7,7 +7,7 @@ const AppProvider = ({ children }) => {
   const [fileName, setFileName] = useState("");
   const [fileContent, setFileContent] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [mode, setMode] = useState("messageFreqCount");
+  const [mode, setMode] = useState("");
 
   return (
     <AppContext.Provider
