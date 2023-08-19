@@ -1,26 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "@/contexts/AppContext";
+import { generateRandomHexColors } from "@/utils/generateRandomHexColors";
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 
-const PieComponent = () => {
+const PieComponent = ({ labels, values }) => {
   const data = {
-    labels: ["Red", "Blue", "Yellow"],
+    labels: labels || ["Red", "Blue", "Yellow"],
     datasets: [
       {
-        data: [300, 50, 100],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+        label: "Emoji Count",
+        data: values || [300, 50, 100],
+        backgroundColor: generateRandomHexColors(values.length),
+        hoverOffset: 5,
+        borderWidth: 0,
+        hoverBorderWidth: 2,
+        cutout: "50%",
+        // spacing: 20,
       },
     ],
   };
   const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+
     responsive: true,
     maintainAspectRatio: false,
   };
 
   return (
-    <div>
+    <div className="">
       <Pie width="400px" height="400px" data={data} options={options} />
     </div>
   );

@@ -23,7 +23,7 @@ const Sidebar = () => {
 
   const handleFileChange = () => {
     const file = fileInputRef.current.files[0];
-    if (!file.name) {
+    if (!file && !file.name) {
       return;
     }
     setFileName(file.name);
