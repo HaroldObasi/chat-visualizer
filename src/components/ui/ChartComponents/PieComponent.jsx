@@ -4,7 +4,7 @@ import { generateRandomHexColors } from "@/utils/generateRandomHexColors";
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 
-const PieComponent = ({ labels, values }) => {
+const PieComponent = ({ labels, values, className }) => {
   const data = {
     labels: labels || ["Red", "Blue", "Yellow"],
     datasets: [
@@ -16,7 +16,6 @@ const PieComponent = ({ labels, values }) => {
         borderWidth: 0,
         hoverBorderWidth: 2,
         cutout: "50%",
-        // spacing: 20,
       },
     ],
   };
@@ -32,8 +31,8 @@ const PieComponent = ({ labels, values }) => {
   };
 
   return (
-    <div className="">
-      <Pie width="400px" height="400px" data={data} options={options} />
+    <div className={`${className}`}>
+      <Pie width="400px" height="350px" data={data} options={options} />
     </div>
   );
 };
