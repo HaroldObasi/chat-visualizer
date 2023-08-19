@@ -1,6 +1,7 @@
 import { useGlobalContext } from "@/contexts/AppContext";
 import React, { useRef } from "react";
 import { FiUpload, FiCheck } from "react-icons/fi";
+import { FaGithub } from "react-icons/fa";
 
 const Sidebar = () => {
   const { sidebarOpen, fileName, setFileName, setFileContent, setSearchToken } =
@@ -34,7 +35,7 @@ const Sidebar = () => {
     <div
       className={`${
         sidebarOpen ? "w-40" : "w-20"
-      }  bg-zinc-800 h-screen px-2 border-r border-zinc-500 pt-4`}
+      }  bg-zinc-800 h-screen px-2 border-r border-zinc-500 pt-4 flex flex-col justify-between`}
     >
       <button
         onClick={onClickUpload}
@@ -61,6 +62,15 @@ const Sidebar = () => {
           onChange={handleFileChange}
         />
       </button>
+
+      <a
+        href="https://github.com/HaroldObasi/chat-visualizer"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex flex-shrink-0 justify-center rounded-md border-2 bg-transparent hover:bg-zinc-500 text-white p-3 shadow-md transition duration-300 ease-in-out"
+      >
+        <FaGithub className="text-xl text-center" />
+      </a>
     </div>
   );
 };
