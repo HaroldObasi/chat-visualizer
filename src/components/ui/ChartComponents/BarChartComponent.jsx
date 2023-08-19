@@ -3,13 +3,15 @@ import { useGlobalContext } from "@/contexts/AppContext";
 import "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 
-const ChartComponent = ({ labels, values, className }) => {
+const BarChartComponent = ({ labels, values, className }) => {
   const { searchToken } = useGlobalContext();
   const data = {
     labels: labels,
     datasets: [
       {
-        label: `Who's sent the most "${searchToken}" in the chat`,
+        label: `Who's sent the most ${
+          searchToken === "" ? "messages" : `'${searchToken}'`
+        } in the chat`,
         data: values,
         backgroundColor: "aqua",
       },
@@ -44,9 +46,9 @@ const ChartComponent = ({ labels, values, className }) => {
 
   return (
     <div className={`relative w-full ${className}`}>
-      <Bar data={data} options={options}></Bar>
+      <Bar height="350px" data={data} options={options}></Bar>
     </div>
   );
 };
 
-export default ChartComponent;
+export default BarChartComponent;

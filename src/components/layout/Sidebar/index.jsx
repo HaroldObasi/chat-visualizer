@@ -10,8 +10,7 @@ const Sidebar = () => {
   function readFile(file) {
     const reader = new FileReader();
     reader.onload = (evt) => {
-      const linesArray = reader.result.split("\n");
-      setFileContent(linesArray);
+      setFileContent(reader.result);
     };
     if (file) {
       reader.readAsText(file);
@@ -24,6 +23,9 @@ const Sidebar = () => {
 
   const handleFileChange = () => {
     const file = fileInputRef.current.files[0];
+    if (!file) {
+      return;
+    }
     setFileName(file.name);
     readFile(file);
   };

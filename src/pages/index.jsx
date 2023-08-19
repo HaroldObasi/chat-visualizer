@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import { useGlobalContext } from "@/contexts/AppContext";
 import MainContent from "@/components/home/MainContent";
+import Head from "next/head";
 
 export default function Home() {
   useEffect(() => {
@@ -23,6 +24,9 @@ export default function Home() {
   const { setSidebarOpen } = useGlobalContext();
   return (
     <div className="flex overflow-y-hidden">
+      <Head>
+        <title>Whatsapp Chat Visualizer</title>
+      </Head>
       <Sidebar />
       <MainContent />
     </div>
