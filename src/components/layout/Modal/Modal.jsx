@@ -6,8 +6,20 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 const Modal = ({ children }) => {
   const { modalOpen, setModalOpen } = useGlobalContext();
   const [isBrowser, setIsBrowser] = useState(null);
+
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    if (children.type.name == "OnBoardModal") {
+      localStorage.setItem("onBoarded", "true");
+    }
+  };
+
   useEffect(() => {
     setIsBrowser(true);
+    if (localStorage.getItem("onBoarded") === "true") {
+      setModalOpen(false);
+    }
   }, []);
 
   if (!modalOpen) {
@@ -17,10 +29,10 @@ const Modal = ({ children }) => {
   const Wrapper = () => (
     <div className="fixed inset-0 z-30 flex items-center justify-center">
       <div className="fixed inset-0 backdrop-blur-sm bg-black/30"></div>
-      <div className="bg-zinc-300 py-5 z-40 px-3 rounded-md shadow-md mx-40">
+      <div className="bg-zinc-300 py-5 z-40 px-3 rounded-md shadow-md mx-5 xs:mx-5 sm:w-[450px]">
         <button
           className="absolute top-2 right-2 text-white hover:text-gray-400"
-          onClick={() => setModalOpen(false)}
+          onClick={() => handleCloseModal()}
         >
           <AiOutlineCloseCircle size={30} />
         </button>
