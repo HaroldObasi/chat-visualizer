@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
   const { setSidebarOpen } = useGlobalContext();
   return (
-    <div className="flex overflow-y-hidden h-[100dvh] w-[100%]">
+    <div className="flex overflow-y-hidden h-[100svh] w-[100%]">
       <Head>
         <title>Whatsapp Chat Visualizer</title>
       </Head>
