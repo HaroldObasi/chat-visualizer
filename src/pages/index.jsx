@@ -3,6 +3,8 @@ import Sidebar from "@/components/layout/Sidebar";
 import { useGlobalContext } from "@/contexts/AppContext";
 import MainContent from "@/components/home/MainContent";
 import Head from "next/head";
+import OnBoardModal from "@/components/layout/Modal/OnBoardModal";
+import Modal from "@/components/layout/Modal/Modal";
 
 export default function Home() {
   useEffect(() => {
@@ -28,6 +30,9 @@ export default function Home() {
         <title>Whatsapp Chat Visualizer</title>
       </Head>
       <Sidebar />
+      <Modal>
+        <OnBoardModal />
+      </Modal>
       <MainContent />
     </div>
   );

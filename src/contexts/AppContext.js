@@ -7,6 +7,7 @@ const AppProvider = ({ children }) => {
   const [fileName, setFileName] = useState("");
   const [fileContent, setFileContent] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(true);
   const [mode, setMode] = useState("");
 
   return (
@@ -22,6 +23,8 @@ const AppProvider = ({ children }) => {
         setSidebarOpen,
         mode,
         setMode,
+        modalOpen,
+        setModalOpen,
       }}
     >
       {children}
