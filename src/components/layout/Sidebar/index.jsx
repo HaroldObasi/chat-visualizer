@@ -2,9 +2,11 @@ import { useGlobalContext } from "@/contexts/AppContext";
 import React, { useRef } from "react";
 import { FiUpload, FiCheck } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
+import { BsChatLeftText } from "react-icons/bs";
+import SideButton from "@/components/ui/SideButton";
 
 const Sidebar = () => {
-  const { sidebarOpen, fileName, setFileName, setFileContent, setSearchToken } =
+  const { sidebarOpen, fileName, setFileName, setFileContent } =
     useGlobalContext();
   const fileInputRef = useRef(null);
 
@@ -37,31 +39,32 @@ const Sidebar = () => {
         sidebarOpen ? "w-40" : "w-20"
       }  bg-zinc-800 h-screen px-2 border-r border-zinc-500 py-4 flex flex-col justify-between`}
     >
-      <button
-        onClick={onClickUpload}
-        className="py-2 px-3 w-full rounded-md border-2 hover:bg-zinc-500 relative"
-      >
-        <FiUpload className="mx-auto my-1" />
+      <div className="space-y-5">
+        <SideButton onClick={onClickUpload}>
+          <FiUpload className="mx-auto my-1" />
 
-        <p className={`text-xs hidden md:block`}>
-          {fileName === ""
-            ? "Click to upload a .txt file here"
-            : `Uploaded: ${fileName}, Click to change file`}
-        </p>
-
-        <FiCheck
-          className={`${
-            fileName === "" ? "hidden" : "block"
-          } absolute text-xl bg-zinc-800 rounded-full right-[-5px] text-green-500`}
-        />
-
-        <input
-          className="input-field hidden"
-          type="file"
-          ref={fileInputRef}
-          onChange={handleFileChange}
-        />
-      </button>
+          <p className={`text-xs hidden md:block`}>
+            {fileName === ""
+              ? "Click to upload a .txt file here"
+              : `Uploaded: ${fileName}, Click to change file`}
+          </p>
+          <FiCheck
+            className={`${
+              fileName === "" ? "hidden" : "block"
+            } absolute text-xl bg-zinc-800 rounded-full right-[-5px] text-green-500`}
+          />
+          <input
+            className="input-field hidden"
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+          />
+        </SideButton>
+        <SideButton>
+          <BsChatLeftText className="mx-auto my-1" />
+          <p className="text-xs hidden md:block">Click to use sample chat</p>
+        </SideButton>
+      </div>
 
       <a
         href="https://github.com/HaroldObasi/chat-visualizer"
