@@ -8,7 +8,7 @@ const OnBoardModal = () => {
     `The purpose of this site is to help provide quick insights for
           whatsapp group chats, these instructions are for Whatsapp on IOS (i
           unfortunately don't have an android), but you should be able to do the
-          same on android as well`,
+          same on android as well there is also a button on the sidebar to use AI generated group chat text as a stand in `,
     `Firstly go to the whatsapp app (on mobile), and then go to the desired
           group chat, click the top (Group Info), scroll down to the "Export
           Chat" button, and select "Without media", (no support for media for
