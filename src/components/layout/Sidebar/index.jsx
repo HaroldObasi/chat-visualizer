@@ -1,5 +1,5 @@
 import { useGlobalContext } from "@/contexts/AppContext";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FiUpload, FiCheck } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 import { BsChatLeftText } from "react-icons/bs";
@@ -9,6 +9,7 @@ const Sidebar = () => {
   const { sidebarOpen, fileName, setFileName, setFileContent } =
     useGlobalContext();
   const fileInputRef = useRef(null);
+  const [useSampleChat, setUseSampleChat] = useState(false);
 
   function readFile(file) {
     const reader = new FileReader();
@@ -31,6 +32,22 @@ const Sidebar = () => {
     }
     setFileName(file.name);
     readFile(file);
+  };
+
+  const onClickSampleChatButton = async () => {
+    if (useSampleChat) {
+      setFileContent([]);
+    } else {
+      try {
+        const response = await fetch("api/readDefaultFile");
+        const data = await response.json();
+        setFileContent(data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    setUseSampleChat(!useSampleChat);
   };
 
   return (
@@ -60,7 +77,11 @@ const Sidebar = () => {
             onChange={handleFileChange}
           />
         </SideButton>
-        <SideButton>
+
+        <SideButton
+          className={`${useSampleChat ? "bg-zinc-600" : ""}`}
+          onClick={onClickSampleChatButton}
+        >
           <BsChatLeftText className="mx-auto my-1" />
           <p className="text-xs hidden md:block">Click to use sample chat</p>
         </SideButton>
