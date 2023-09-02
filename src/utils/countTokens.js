@@ -13,7 +13,7 @@ export const countTokens = (data, searchToken) => {
       SEARCHES[user] = 0;
     }
 
-    if (text.includes(searchToken)) {
+    if (text.toLowerCase().includes(searchToken.toLowerCase())) {
       if (SEARCHES[user] !== undefined) {
         SEARCHES[user]++;
       } else {
