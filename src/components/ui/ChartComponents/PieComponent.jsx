@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useGlobalContext } from "@/contexts/AppContext";
+import React from "react";
 import { generateRandomHexColors } from "@/utils/generateRandomHexColors";
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";

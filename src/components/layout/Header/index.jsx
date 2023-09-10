@@ -22,6 +22,7 @@ const Header = () => {
       >
         <option value="messageFreqCount">Message Frequency Count</option>
         <option value="emojiFreqCount">Emoji Frequency Count</option>
+        <option value="timeFreq">Time Frequency Count</option>
       </select>
 
       <SearchBar className="flex-1" />
