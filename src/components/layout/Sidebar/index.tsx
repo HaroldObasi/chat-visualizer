@@ -1,19 +1,19 @@
-import { useGlobalContext } from "@/contexts/AppContext";
+import { useGlobalContext } from "../../../contexts/AppContext";
 import React, { useRef, useState } from "react";
 import { FiUpload, FiCheck } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 import { BsChatLeftText } from "react-icons/bs";
-import SideButton from "@/components/ui/SideButton";
+import SideButton from "../../ui/SideButton";
 
 const Sidebar = () => {
   const { sidebarOpen, fileName, setFileName, setFileContent } =
     useGlobalContext();
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [useSampleChat, setUseSampleChat] = useState(false);
 
-  function readFile(file) {
+  function readFile(file: File) {
     const reader = new FileReader();
-    reader.onload = (evt) => {
+    reader.onload = () => {
       setFileContent(reader.result);
     };
     if (file) {
@@ -22,16 +22,19 @@ const Sidebar = () => {
   }
 
   const onClickUpload = () => {
-    fileInputRef.current.click();
+    fileInputRef?.current?.click();
   };
 
   const handleFileChange = () => {
-    const file = fileInputRef.current.files[0];
-    if (!file) {
-      return;
+    if (fileInputRef?.current?.files) {
+      const file = fileInputRef.current.files[0];
+      if (!file) {
+        return;
+      }
+      setFileName(file.name);
+      readFile(file);
     }
-    setFileName(file.name);
-    readFile(file);
+    return;
   };
 
   const onClickSampleChatButton = async () => {

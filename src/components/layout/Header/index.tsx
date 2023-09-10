@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from "react";
-import SearchBar from "@/components/ui/SearchBar";
-import { useGlobalContext } from "@/contexts/AppContext";
+import SearchBar from "../../ui/SearchBar";
+import { useGlobalContext } from "../../../contexts/AppContext";
 
 const Header = () => {
   const { setMode, mode } = useGlobalContext();
-  const selectModeRef = useRef(null);
+  const selectModeRef = useRef<HTMLSelectElement | null>(null);
 
   useEffect(() => {
     if (mode === "") {

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "chart.js/auto";
 import PieComponent from "../ui/ChartComponents/PieComponent";
-import { countFrequentEmojis } from "@/utils/countFrequentEmojis";
-import { useGlobalContext } from "@/contexts/AppContext";
+import { countFrequentEmojis } from "../../utils/countFrequentEmojis";
+import { useGlobalContext } from "../../contexts/AppContext";
 
 const EmojiCount = () => {
   const { fileContent } = useGlobalContext();
-  const [emojis, setEmojis] = useState([]);
-  const [emojiCount, setEmojiCount] = useState([]);
+  const [emojis, setEmojis] = useState<string[]>([]);
+  const [emojiCount, setEmojiCount] = useState<string | number[]>([]);
 
   useEffect(() => {
     if (fileContent.length >= 1) {

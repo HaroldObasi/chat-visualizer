@@ -1,9 +1,13 @@
 import React from "react";
-import { useGlobalContext } from "@/contexts/AppContext";
+import { useGlobalContext } from "../../../contexts/AppContext";
 import "chart.js/auto";
-import { Bar, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
-const LineChartComponent = ({ className }) => {
+type ChartComponentTypes = {
+  className?: string;
+};
+
+const LineChartComponent: React.FC<ChartComponentTypes> = ({ className }) => {
   const data = {
     labels: [
       "00:00",

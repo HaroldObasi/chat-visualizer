@@ -1,16 +1,19 @@
-import { useGlobalContext } from "@/contexts/AppContext";
-import React, { useEffect, useState } from "react";
+import { useGlobalContext } from "../../../contexts/AppContext";
+import React, { useEffect, useState, ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-const Modal = ({ children }) => {
-  const { modalOpen, setModalOpen } = useGlobalContext();
-  const [isBrowser, setIsBrowser] = useState(null);
+type ModalProps = {
+  children: any;
+};
 
+const Modal: React.FC<ModalProps> = ({ children }) => {
+  const { modalOpen, setModalOpen } = useGlobalContext();
+  const [isBrowser, setIsBrowser] = useState<any>(null);
 
   const handleCloseModal = () => {
     setModalOpen(false);
-    if (children.type.name == "OnBoardModal") {
+    if (children?.type?.name == "OnBoardModal") {
       localStorage.setItem("onBoarded", "true");
     }
   };
@@ -42,7 +45,7 @@ const Modal = ({ children }) => {
   );
 
   if (isBrowser) {
-    return createPortal(Wrapper(), document.getElementById("modal"));
+    return createPortal(Wrapper(), document.getElementById("modal")!);
   }
 
   return null;

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import Sidebar from "@/components/layout/Sidebar";
-import { useGlobalContext } from "@/contexts/AppContext";
-import MainContent from "@/components/home/MainContent";
+import Sidebar from "../components/layout/Sidebar";
+import { useGlobalContext } from "../contexts/AppContext";
+import MainContent from "../components/home/MainContent";
 import Head from "next/head";
-import OnBoardModal from "@/components/layout/Modal/OnBoardModal";
-import Modal from "@/components/layout/Modal/Modal";
+import OnBoardModal from "../components/layout/Modal/OnBoardModal";
+import Modal from "../components/layout/Modal/Modal";
 
 export default function Home() {
   useEffect(() => {
@@ -23,6 +23,7 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   const { setSidebarOpen } = useGlobalContext();
   return (
     <div className="flex overflow-y-hidden max-h-screen w-[100%]">

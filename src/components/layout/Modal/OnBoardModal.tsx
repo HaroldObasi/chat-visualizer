@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { AiOutlineRightCircle, AiOutlineLeftCircle } from "react-icons/ai";
 
 const OnBoardModal = () => {
-  const [onBoardStepPage, setOnBoardStepPage] = useState(0);
+  const [onBoardStepPage, setOnBoardStepPage] = useState<number>(0);
 
-  const onBoardSteps = [
+  const onBoardSteps: Array<string> = [
     `The purpose of this site is to help provide quick insights for
           whatsapp group chats, these instructions are for Whatsapp on IOS (i
           unfortunately don't have an android), but you should be able to do the
@@ -19,7 +19,7 @@ const OnBoardModal = () => {
           can easily upload it with the button on the side bar`,
   ];
 
-  const goRight = () => {
+  const goRight = (): void => {
     if (onBoardStepPage >= onBoardSteps.length - 1) {
       return;
     }
@@ -27,7 +27,7 @@ const OnBoardModal = () => {
     setOnBoardStepPage(onBoardStepPage + 1);
   };
 
-  const goLeft = () => {
+  const goLeft = (): void => {
     if (onBoardStepPage <= 0) {
       return;
     }

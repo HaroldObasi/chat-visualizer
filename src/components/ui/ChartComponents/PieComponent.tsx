@@ -1,9 +1,19 @@
 import React from "react";
-import { generateRandomHexColors } from "@/utils/generateRandomHexColors";
+import { generateRandomHexColors } from "../../../utils/generateRandomHexColors";
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 
-const PieComponent = ({ labels, values, className }) => {
+type PieComponentType = {
+  labels: string[];
+  values: string | number[];
+  className?: string;
+};
+
+const PieComponent: React.FC<PieComponentType> = ({
+  labels,
+  values,
+  className,
+}) => {
   const data = {
     labels: labels || ["Red", "Blue", "Yellow"],
     datasets: [

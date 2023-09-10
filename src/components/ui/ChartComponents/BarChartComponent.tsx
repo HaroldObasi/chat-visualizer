@@ -1,9 +1,19 @@
 import React from "react";
-import { useGlobalContext } from "@/contexts/AppContext";
+import { useGlobalContext } from "../../../contexts/AppContext";
 import "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 
-const BarChartComponent = ({ labels, values, className }) => {
+type ChartComponent = {
+  labels: string[];
+  values: number[];
+  className?: string;
+};
+
+const BarChartComponent: React.FC<ChartComponent> = ({
+  labels,
+  values,
+  className,
+}) => {
   const { searchToken } = useGlobalContext();
   const data = {
     labels: labels,

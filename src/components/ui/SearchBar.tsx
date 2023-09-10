@@ -1,8 +1,12 @@
-import { useGlobalContext } from "@/contexts/AppContext";
+import { useGlobalContext } from "../../contexts/AppContext";
 import { HiOutlineSearch } from "react-icons/hi";
 import React from "react";
 
-const SearchBar = ({ className }) => {
+type SearchBarProps = {
+  className?: string;
+};
+
+const SearchBar: React.FC<SearchBarProps> = ({ className }) => {
   const { setSearchToken, fileContent } = useGlobalContext();
 
   return (

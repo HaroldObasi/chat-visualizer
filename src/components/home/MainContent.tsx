@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useGlobalContext } from "@/contexts/AppContext";
+import React from "react";
+import { useGlobalContext } from "../../contexts/AppContext";
 import MessageCount from "./MessageCount";
 import EmojiCount from "./EmojiCount";
 import Header from "../layout/Header";
@@ -13,8 +13,8 @@ const MainContent = () => {
       return <MessageCount />;
     } else if (mode === "emojiFreqCount") {
       return <EmojiCount />;
-    } else if (mode === "timeFreq"){
-      return <TimeFreq />
+    } else if (mode === "timeFreq") {
+      return <TimeFreq />;
     }
 
     return <></>;

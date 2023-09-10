@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import BarChartComponent from "../ui/ChartComponents/BarChartComponent";
-import { useGlobalContext } from "@/contexts/AppContext";
-import { countTokens } from "@/utils/countTokens";
+import { useGlobalContext } from "../../contexts/AppContext";
+import { countTokens } from "../../utils/countTokens";
 
 const MessageCount = () => {
   const { fileContent, searchToken } = useGlobalContext();
-  const [groupMembers, setGroupMembers] = useState([]);
-  const [groupTokenCount, setGroupTokenCount] = useState([]);
+  const [groupMembers, setGroupMembers] = useState<string[]>([]);
+  const [groupTokenCount, setGroupTokenCount] = useState<number[]>([]);
 
   useEffect(() => {
     if (fileContent.length >= 1) {

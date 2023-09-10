@@ -1,4 +1,4 @@
-import { useGlobalContext } from "@/contexts/AppContext";
+import { useGlobalContext } from "../../contexts/AppContext";
 import React, { useEffect } from "react";
 import LineChartComponent from "../ui/ChartComponents/LineChartComponent";
 
